@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Boid : MonoBehaviour {
 
-    public Vector3 seekTarget;
+    Vector3 seekTarget;
 
     public Vector3 velocity;
     public Vector3 acceleration;
@@ -26,10 +26,25 @@ public class Boid : MonoBehaviour {
 
     }
 
+	public Vector3 SeekTar()
+	{
+		return seekTarget;
+		}
+
 	// Use this for initialization
 	void Start () {
-	
+		seekTarget = this.GetComponent<FollowPath> ().AdvancedToNext (transform.position);
+
 	}
+
+	void Here()
+	{
+		if (Vector3.Distance (transform.position, seekTarget) <= 0.9f) {
+			seekTarget = this.GetComponent<FollowPath> ().AdvancedToNext (transform.position);
+				}
+		}
+		
+
 
     Vector3 Seek(Vector3 seekTarget)
     {
@@ -79,6 +94,8 @@ public class Boid : MonoBehaviour {
         {
             transform.forward = velocity.normalized;
         }
+
+		Here ();
 
         force = Vector3.zero;
 	}

@@ -12,10 +12,10 @@ public class TargetUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Boid boid = cube.GetComponent<Boid>();
-            boid.seekTarget = transform.position + transform.forward * 20.0f;
-        }
+        //if (Input.GetMouseButton(0))
+        //{
+         //   Boid boid = cube.GetComponent<Boid>();
+          //  boid.SeekTar = transform.position + transform.forward * 20.0f;
+        //}
 	}
 }
